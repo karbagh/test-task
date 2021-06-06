@@ -1,28 +1,26 @@
+import Class.Sort
+import Class.Spiral
+import java.util.*
+
 val list = mutableListOf<Int>(0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-var returnValue = -1
-var c = 0
-fun findInArrayFirstTrue(mutableList: MutableList<Int>): Int {
-    if (mutableList.first() == 1){
-        return 0
-    }
-
-    if (mutableList.size > 1) {
-        c++
-        val halfLength: Int = (mutableList.size / 2).toInt()
-
-        if (mutableList.get(halfLength) == 1 && mutableList.get(halfLength - 1) == 0) {
-            returnValue = halfLength
-        } else if (mutableList.get(halfLength) == 1 && mutableList.get(halfLength - 1) == 1) {
-            findInArrayFirstTrue(mutableList.subList(0, halfLength - 1))
-        } else if (mutableList.get(halfLength) == 0 && mutableList.get(halfLength - 1) == 0) {
-            findInArrayFirstTrue(mutableList.subList(halfLength, mutableList.size))
-        }
-    }
-
-    return returnValue
-}
+val mt = mutableListOf<Int>(1,3,4,6,7,12,23,32,54)
+val nt = mutableListOf<Int>(-31,-3,2,12,34,43,76,123,154)
 
 fun main() {
-    println(findInArrayFirstTrue(list))
+//    val findInArrayFirstOneElement = Class.FindInArrayFirstOneElement()
+//    println(findInArrayFirstOneElement.findInArrayFirstTrue(list))
+//    val sort = Sort()
+//    println(sort.mergeSorted(mt, nt))
+    val spiral = Spiral()
+    val array = spiral.spiralNumbers(4)
+
+    if (array != null) {
+        for (element in array)  {
+            for (el in element) {
+                print(String.format("%10s", el));
+            }
+            println()
+        }
+    }
 }
